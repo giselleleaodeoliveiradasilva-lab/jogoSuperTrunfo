@@ -1,34 +1,40 @@
 #include <stdio.h>
 
 
-   int main(){
-
+   
+int main()
+{
 
     char Estado1;
     char codigo1[50];
     char nomeDaCidade1[50];
-    int Populacao1;
+    unsigned long int Populacao1;
     float Area1;
     float Pib1;
     int NumeroDePontosTuristico1;
+    
+
     char Estado2;
     char codigo2[50];
     char nomeDaCidade2[50];
-    int Populacao2;
+    unsigned long int Populacao2;
     float Area2;
     float Pib2;
     int NumeroDePontosTuristico2;
-
-
+    
     // Variáveis para os cálculos
  float calculardensidadePopul1;
     float resultado1 ;
     float calcularPib1 ;
     float pibPerCapita1 ;
+    float superPoder1;
+    
+
     float calculardensidadePopul2;
     float resultado2;
     float calcularPib2 ;
     float pibPerCapita2 ;
+    float superPoder2;
 
 
 
@@ -57,8 +63,9 @@
      resultado1 = calculardensidadePopul1;
      calcularPib1 = Pib1 /(float) Populacao1;
      pibPerCapita1 = calcularPib1;
+     superPoder1 = (float)Populacao1+Area1+Pib1+(float)NumeroDePontosTuristico1+pibPerCapita1+(1.f/calculardensidadePopul1);
     
-    printf("Calcule a Densidade Populacional:%.2f\n", calculardensidadePopul1);
+    printf("Calcule a Densidade Populacional:%lu\n", calculardensidadePopul1);
     printf("Calcule o Pib per Capita:%.2f\n", pibPerCapita1);
 
     printf("Carta 2:\n");
@@ -72,6 +79,7 @@
     scanf(" %d", &Populacao2);
     printf("Digite a Area:\n");
     scanf(" %f", &Area2);
+
     printf("Digite i Pib:\n");
     scanf(" %f", &Pib2);
     printf("Digite o numero de pontos Turisticos:\n");
@@ -84,8 +92,9 @@
      resultado2 = calculardensidadePopul2;
      calcularPib2 = Pib2 /(float) Populacao2;
      pibPerCapita2 = calcularPib2;
+     superPoder2 = (float)Populacao2+Area1+Pib2+(float)NumeroDePontosTuristico2+pibPerCapita2+(1.f/calculardensidadePopul2);
 
-    printf("Calcule a Densidade Populacional:%.2f\n", calculardensidadePopul2);
+    printf("Calcule a Densidade Populacional:%lu\n", calculardensidadePopul2);
     printf("Calcule o Pib per Capita:%.2f\n", pibPerCapita2);
 
     printf("Resultado obtido para esse jogo:\n");
@@ -110,9 +119,40 @@
     printf("Densidade Popupacional e:%.2f\n", resultado2);
     printf("Pib per Capita e:%.2f\n", pibPerCapita2);
 
+    // --- EXIBIÇÃO DOS RESULTADOS ---
+    printf("\n--- Resultado obtido ---\n");
+    printf("Carta 1 - %s: Super Poder = %.2f\n", nomeDaCidade1, superPoder1);
+    printf("Carta 2 - %s: Super Poder = %.2f\n", nomeDaCidade2, superPoder2);
+
+    printf("\n--- RESULTADO DAS COMPARACOES (1: Carta 1 vence | 0: Carta 2 vence) ---\n");
+
+    // Comparação de População (Maior vence)
+    printf("Populacao: %d\n", Populacao1 > Populacao2);
+
+    // Comparação de Area (Maior vence)
+    printf("Area: %d\n", Area1 > Area2);
+
+    // Comparação de PIB (Maior vence)
+    printf("PIB: %d\n", Pib1 > Pib2);
+
+    // Comparação de Pontos Turísticos (Maior vence)
+    printf("Pontos Turisticos: %d\n", NumeroDePontosTuristico1 > NumeroDePontosTuristico2);
+
+    // Comparação de Densidade Populacional (MENOR vence)
+    
+    printf("Densidade Populacional: %d\n", resultado1 < resultado2);
+
+    // Comparação de PIB per Capita (Maior vence)
+    printf("PIB per Capita: %d\n", pibPerCapita1 > pibPerCapita2);
+
+    // Comparação de Super Poder (Maior vence)
+    printf("Super Poder: %d\n", superPoder1 > superPoder2);
+
+
+
     return 0;
 }
-   
+
    
     
 
